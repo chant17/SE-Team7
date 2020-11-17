@@ -22,7 +22,7 @@ export default class CreateExercise extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount() { //This is a REACT lifecycle method ok
     axios.get('http://localhost:5000/users/')
       .then(response => {
         if (response.data.length > 0) {
@@ -83,7 +83,7 @@ export default class CreateExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Create New Exercise Log</h3>
+      <h3>Changing role</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
