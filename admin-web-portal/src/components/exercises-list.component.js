@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Exercise = props => (
+const Exercise = props => (    //functional react component
   <tr>
     <td>{props.exercise.username}</td>
     <td>{props.exercise.description}</td>
@@ -14,7 +14,7 @@ const Exercise = props => (
   </tr>
 )
 
-export default class ExercisesList extends Component {
+export default class ExercisesList extends Component {   //class component
   constructor(props) {
     super(props);
 
@@ -51,12 +51,12 @@ export default class ExercisesList extends Component {
   render() {
     return (
       <div>
-        <h3>Logged Exercises</h3>
+        <h3>Logged Users</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>
               <th>Username</th>
-              <th>Description</th>
+              <th>Role</th>
               <th>Duration</th>
               <th>Date</th>
               <th>Actions</th>

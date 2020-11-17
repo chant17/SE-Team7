@@ -28,10 +28,10 @@ export default class CreateUser extends Component {
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.post('http://localhost:5000/users/add', user) //This is where it post to the endpoint
       .then(res => console.log(res.data));
 
-    this.setState({
+    this.setState({ //were sending the username
       username: ''
     })
   }

@@ -16,7 +16,7 @@ export default class EditExercise extends Component {
     this.state = {
       username: '',
       description: '',
-      duration: 0,
+      duration: '',
       date: new Date(),
       users: []
     }
@@ -95,7 +95,7 @@ export default class EditExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Edit Exercise Log</h3>
+      <h3>Edit User Role</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -115,7 +115,7 @@ export default class EditExercise extends Component {
           </select>
         </div>
         <div className="form-group"> 
-          <label>Description: </label>
+          <label>Role: </label>
           <input  type="text"
               required
               className="form-control"
@@ -133,7 +133,7 @@ export default class EditExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Date: </label>
+          <label>Date of change: </label>
           <div>
             <DatePicker
               selected={this.state.date}

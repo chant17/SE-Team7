@@ -18,10 +18,11 @@ export default class CreateExercise extends Component {
       description: '',
       duration: 0,
       date: new Date(),
-      users: []
+      users: [],
+      roles:["Support_Admin", "Finance-Admin", "HR_Admin"]
     }
   }
-
+ 
   componentDidMount() { //This is a REACT lifecycle method ok
     axios.get('http://localhost:5000/users/')
       .then(response => {
@@ -103,14 +104,33 @@ export default class CreateExercise extends Component {
           </select>
         </div>
         <div className="form-group"> 
-          <label>Description: </label>
+          <label>Roles: </label>
+          <select ref="roleInput"
+              required
+              className="form-control"
+              value={this.state.description}
+              onChange={this.onChangeDescription}>
+              {
+                this.state.roles.map(function(roles) {
+                  return <option 
+                    key={roles}
+                    value={roles}>{roles}
+                    </option>;
+                })
+                
+              }
+          </select>
+        </div>
+        {/* <div className="form-group"> 
+          <label>Role: </label>
           <input  type="text"
               required
               className="form-control"
               value={this.state.description}
               onChange={this.onChangeDescription}
               />
-        </div>
+             
+        </div> */}
         <div className="form-group">
           <label>Duration (in minutes): </label>
           <input 
