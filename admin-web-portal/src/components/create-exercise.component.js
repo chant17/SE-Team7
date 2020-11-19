@@ -18,7 +18,7 @@ export default class CreateExercise extends Component {
       description: '',
       duration: 0,
       date: new Date(),
-      users: [],
+      users: ["dummy"],
       roles:["Support_Admin", "Finance-Admin", "HR_Admin"]
     }
   }
