@@ -1,0 +1,8 @@
+body{
+    font-family: system-ui;
+  background: cyan;
+  color: gray;
+  text-align: center;
+  font-size: 12px;
+  border: 2px gray;
+}

@@ -8,22 +8,19 @@ export default class CreateExercise extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeadmin_role = this.onChangeadmin_role.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      description: '',
-      duration: 0,
+      admin_role: '',
       date: new Date(),
-      users: ["dummy"],
-      roles:["Support_Admin", "Finance-Admin", "HR_Admin"]
+      users: []
     }
   }
- 
-  componentDidMount() { //This is a REACT lifecycle method ok
+
+  componentDidMount() {
     axios.get('http://localhost:5000/users/')
       .then(response => {
         if (response.data.length > 0) {
@@ -45,18 +42,11 @@ export default class CreateExercise extends Component {
     })
   }
 
-  onChangeDescription(e) {
+  onChangeadmin_role(e) {
     this.setState({
-      description: e.target.value
+      admin_role: e.target.value
     })
   }
-
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
-    })
-  }
-
   onChangeDate(date) {
     this.setState({
       date: date
@@ -68,23 +58,22 @@ export default class CreateExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
+      admin_role: this.state.admin_role,
       date: this.state.date
     }
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('http://localhost:5000/roles/add', exercise)
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    // window.location = '/';
   }
 
   render() {
     return (
     <div>
-      <h3>Changing role</h3>
+      <h3>Assign Roles</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -104,40 +93,12 @@ export default class CreateExercise extends Component {
           </select>
         </div>
         <div className="form-group"> 
-          <label>Roles: </label>
-          <select ref="roleInput"
-              required
-              className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}>
-              {
-                this.state.roles.map(function(roles) {
-                  return <option 
-                    key={roles}
-                    value={roles}>{roles}
-                    </option>;
-                })
-                
-              }
-          </select>
-        </div>
-        {/* <div className="form-group"> 
-          <label>Role: </label>
+          <label>admin role: </label>
           <input  type="text"
               required
               className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-              />
-             
-        </div> */}
-        <div className="form-group">
-          <label>Duration (in minutes): </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
+              value={this.state.admin_role}
+              onChange={this.onChangeadmin_role}
               />
         </div>
         <div className="form-group">
@@ -151,7 +112,7 @@ export default class CreateExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Create Role" className="btn btn-primary" />
         </div>
       </form>
     </div>

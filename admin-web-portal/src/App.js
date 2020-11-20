@@ -1,12 +1,12 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route} from "react-router-dom";
-
 import Navbar from "./components/navbar.component"
-import ExercisesList from "./components/exercises-list.component";
-import EditExercise from "./components/edit-exercise.component";
-import CreateExercise from "./components/create-exercise.component";
+import RolesList from "./components/roles-list.component";
+import EditRole from "./components/edit-role.component";
+import CreateRole from "./components/create-role.component";
 import CreateUser from "./components/create-user.component";
+import style from "./components/component-CSS/main.css"
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
       <div className="container">
       <Navbar />
       <br/>
-      <Route path="/" exact component={ExercisesList} />
-      <Route path="/edit/:id" component={EditExercise} />
-      <Route path="/create" component={CreateExercise} />
+      <Route path="/" exact component={RolesList} />
+      <Route path="/edit/:id" component={EditRole} />
+      <Route path="/create" component={CreateRole} />
       <Route path="/user" component={CreateUser} />
       </div>
     </Router>

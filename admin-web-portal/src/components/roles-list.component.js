@@ -5,8 +5,7 @@ import axios from 'axios';
 const Exercise = props => (    //functional react component
   <tr>
     <td>{props.exercise.username}</td>
-    <td>{props.exercise.description}</td>
-    <td>{props.exercise.duration}</td>
+    <td>{props.exercise.admin_role}</td>
     <td>{props.exercise.date.substring(0,10)}</td>
     <td>
       <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
@@ -24,7 +23,7 @@ export default class ExercisesList extends Component {   //class component
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/')
+    axios.get('http://localhost:5000/roles/')
       .then(response => {
         this.setState({ exercises: response.data })
       })
@@ -34,7 +33,7 @@ export default class ExercisesList extends Component {   //class component
   }
 
   deleteExercise(id) {
-    axios.delete('http://localhost:5000/exercises/'+id)
+    axios.delete('http://localhost:5000/roles/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
@@ -57,7 +56,6 @@ export default class ExercisesList extends Component {   //class component
             <tr>
               <th>Username</th>
               <th>Role</th>
-              <th>Duration</th>
               <th>Date</th>
               <th>Actions</th>
             </tr>
