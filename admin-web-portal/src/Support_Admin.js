@@ -6,9 +6,9 @@ import RolesList from "./components/roles-list.component";
 import EditRole from "./components/edit-role.component";
 import CreateRole from "./components/create-role.component";
 import CreateUser from "./components/create-user.component";
-import style from "./components/component-CSS/main.css"
+import css from "./components/component-CSS/main.css"
 
-function App() {
+function Support_Admin() {
   return (
     <Router>
       <div className="container">
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Support_Admin;
