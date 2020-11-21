@@ -3,44 +3,30 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class EditExercise extends Component {
+export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeadmin_role = this.onChangeadmin_role.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      description: '',
-      duration: '',
+      admin_role: '',
       date: new Date(),
       users: []
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
-      .then(response => {
-        this.setState({
-          username: response.data.username,
-          description: response.data.description,
-          duration: response.data.duration,
-          date: new Date(response.data.date)
-        })   
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-
     axios.get('http://localhost:5000/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
             users: response.data.map(user => user.username),
+            username: response.data[0].username
           })
         }
       })
@@ -56,18 +42,11 @@ export default class EditExercise extends Component {
     })
   }
 
-  onChangeDescription(e) {
+  onChangeadmin_role(e) {
     this.setState({
-      description: e.target.value
+      admin_role: e.target.value
     })
   }
-
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
-    })
-  }
-
   onChangeDate(date) {
     this.setState({
       date: date
@@ -79,14 +58,13 @@ export default class EditExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
+      admin_role: this.state.admin_role,
       date: this.state.date
     }
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
+    axios.post('http://localhost:5000/roles/add', exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -95,7 +73,7 @@ export default class EditExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Edit User Role</h3>
+      <h3>Assign Roles</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -115,25 +93,16 @@ export default class EditExercise extends Component {
           </select>
         </div>
         <div className="form-group"> 
-          <label>Role: </label>
+          <label>admin role: </label>
           <input  type="text"
               required
               className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
+              value={this.state.admin_role}
+              onChange={this.onChangeadmin_role}
               />
         </div>
         <div className="form-group">
-          <label>Duration (in minutes): </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
-              />
-        </div>
-        <div className="form-group">
-          <label>Date of change: </label>
+          <label>Date: </label>
           <div>
             <DatePicker
               selected={this.state.date}
@@ -143,7 +112,7 @@ export default class EditExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Create Role" className="btn btn-primary" />
         </div>
       </form>
     </div>

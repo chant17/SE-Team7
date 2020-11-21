@@ -3,33 +3,41 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateExercise extends Component {
+export default class EditExercise extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeAdmin_role = this.onChangeAdmin_role.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      description: '',
-      duration: 0,
+      admin_role: '',
       date: new Date(),
-      users: ["dummy"],
-      roles:["Support_Admin", "Finance-Admin", "HR_Admin"]
+      users: []
     }
   }
- 
-  componentDidMount() { //This is a REACT lifecycle method ok
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/roles/'+this.props.match.params.id)
+      .then(response => {
+        this.setState({
+          username: response.data.username,
+          admin_role: response.data.admin_role,
+          date: new Date(response.data.date)
+        })   
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
     axios.get('http://localhost:5000/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
             users: response.data.map(user => user.username),
-            username: response.data[0].username
           })
         }
       })
@@ -45,15 +53,9 @@ export default class CreateExercise extends Component {
     })
   }
 
-  onChangeDescription(e) {
+  onChangeAdmin_role(e) {
     this.setState({
-      description: e.target.value
-    })
-  }
-
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
+      admin_role: e.target.value
     })
   }
 
@@ -68,14 +70,13 @@ export default class CreateExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
+      admin_role: this.state.admin_role,
       date: this.state.date
     }
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('http://localhost:5000/roles/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -84,7 +85,7 @@ export default class CreateExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Changing role</h3>
+      <h3>Edit User Role</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -104,44 +105,16 @@ export default class CreateExercise extends Component {
           </select>
         </div>
         <div className="form-group"> 
-          <label>Roles: </label>
-          <select ref="roleInput"
-              required
-              className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}>
-              {
-                this.state.roles.map(function(roles) {
-                  return <option 
-                    key={roles}
-                    value={roles}>{roles}
-                    </option>;
-                })
-                
-              }
-          </select>
-        </div>
-        {/* <div className="form-group"> 
           <label>Role: </label>
           <input  type="text"
               required
               className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-              />
-             
-        </div> */}
-        <div className="form-group">
-          <label>Duration (in minutes): </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
+              value={this.state.admin_role}
+              onChange={this.onChangeAdmin_role}
               />
         </div>
         <div className="form-group">
-          <label>Date: </label>
+          <label>Date of change: </label>
           <div>
             <DatePicker
               selected={this.state.date}
@@ -151,7 +124,7 @@ export default class CreateExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Confirm Edit" className="btn btn-primary" />
         </div>
       </form>
     </div>
