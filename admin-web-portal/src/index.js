@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Support_Page from "./Support_Admin";
-
+import Support from "./Support_Admin";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Support_Page />
-  </React.StrictMode>,
+  
+    <Support />,
   document.getElementById("root")
 );
 
