@@ -8,27 +8,24 @@ export default class EditExercise extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeAdmin_role = this.onChangeAdmin_role.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      description: '',
-      duration: '',
+      admin_role: '',
       date: new Date(),
       users: []
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/roles/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
-          description: response.data.description,
-          duration: response.data.duration,
+          admin_role: response.data.admin_role,
           date: new Date(response.data.date)
         })   
       })
@@ -56,15 +53,9 @@ export default class EditExercise extends Component {
     })
   }
 
-  onChangeDescription(e) {
+  onChangeAdmin_role(e) {
     this.setState({
-      description: e.target.value
-    })
-  }
-
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
+      admin_role: e.target.value
     })
   }
 
@@ -79,14 +70,13 @@ export default class EditExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
+      admin_role: this.state.admin_role,
       date: this.state.date
     }
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
+    axios.post('http://localhost:5000/roles/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -119,17 +109,8 @@ export default class EditExercise extends Component {
           <input  type="text"
               required
               className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-              />
-        </div>
-        <div className="form-group">
-          <label>Duration (in minutes): </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
+              value={this.state.admin_role}
+              onChange={this.onChangeAdmin_role}
               />
         </div>
         <div className="form-group">
@@ -143,7 +124,7 @@ export default class EditExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Confirm Edit" className="btn btn-primary" />
         </div>
       </form>
     </div>
