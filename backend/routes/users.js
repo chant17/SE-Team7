@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
   try{
 
     const { username, password} = req.body;
-    const errors = validationResult(req);
+    const errors = validationResult(req); //THIS IS NOT DEFINED
     let user = await User.findOne({ username });
 
     if(!errors.isEmpty()){
@@ -76,7 +76,7 @@ router.post('/', async (req, res) => {
       //NEED A QUERY HERE TO CHECK ADMIN CREDENTIAL
     }
     else{
-      console.log("Here " + error.message);
+      console.log("Wrong password");
       res.status(401).json({ msg: "Password doesn't match" })
     }
 
