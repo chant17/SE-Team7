@@ -15,11 +15,16 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+<<<<<<< HEAD
+    "mongoose": "^5.10.9",
+    "nodemon": "^2.0.6"
+=======
     "express-session": "^1.17.1",
     "express-validation": "^3.0.6",
     "express-validator": "^6.6.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0"
+>>>>>>> 3147c2503c4244a1ef47b5f25d70aab7b4442cb0
   }
 }
