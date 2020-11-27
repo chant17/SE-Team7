@@ -12,7 +12,7 @@ import NewRoleList from "./components/lists"
 function Support() {
   return (
     <Router>
-      <div className="container">
+      <div className="container"> 
       <Navbar />
       <br/>
       <Route path="/" exact component={NewRoleList} />
