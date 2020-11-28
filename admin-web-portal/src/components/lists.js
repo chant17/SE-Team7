@@ -13,7 +13,7 @@ const Exercise = (
     <td>
       <Link to={"/edit/" + props.exercise._id}>edit</Link> |{" "}
       <a
-        href="#"
+        href="linked_page"
         onClick={() => {
           props.deleteExercise(props.exercise._id);
         }}
@@ -57,6 +57,7 @@ const Example = () => {
     });
 
     // this.setState({
+
     //   exercises: this.state.exercises.filter(el => el._id !== id)
     // })
 
