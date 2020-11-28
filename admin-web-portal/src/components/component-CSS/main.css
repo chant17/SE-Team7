@@ -6,17 +6,18 @@ body {
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
-  background: #1b1d22;
+  /* background: #1b1d22; */
+  background-color: navy;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.spec-navbar{
+.spec-navbar {
   align-items: center;
   align-content: center;
 }
-tbody{
-  color:white;
+tbody {
+  color: white;
 }
 .Title {
   color: rgb(8, 229, 236);
@@ -34,12 +35,12 @@ tbody{
 }
 .container .card {
   position: relative;
-  min-width: 320px;
-  height: 440px;
+  min-width: 250px;
+  height: 400px;
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-  border-radius: 75px;
+  border-radius: 25px;
   margin: 25px;
 }
 .container .card .box {
