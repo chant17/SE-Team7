@@ -27,7 +27,7 @@ const Exercise = (
 const Example = () => {
   const [value, setValue] = useState([]);
   useEffect(() => {
-    console.log("TESt");
+    console.log("TEST");
     const fetchData = async () => {
       try {
         const { data } = await axios.get("http://localhost:5000/roles/");

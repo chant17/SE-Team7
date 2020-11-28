@@ -11,7 +11,8 @@ import "./components/component-CSS/main.css";
 import HR from "./HR"
 
 ReactDOM.render(
-    <Login />,
+    // <Login />,
+    <Support/>,
     document.getElementById("root")
 );
 
