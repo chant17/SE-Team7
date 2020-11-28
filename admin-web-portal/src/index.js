@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+import Login from "./login";
 import Support from "./Support_Admin";
 import Finance from "./Finance_Admin"
 import Sales from "./Sales_Admin"
@@ -9,12 +11,8 @@ import "./components/component-CSS/main.css";
 import HR from "./HR"
 
 ReactDOM.render(
-  
-    // <Support />,
-    // <Finance/>,
-    // <Sales/>,
-    <HR/>,
-  document.getElementById("root")
+    <Login />,
+    document.getElementById("root")
 );
 
 
