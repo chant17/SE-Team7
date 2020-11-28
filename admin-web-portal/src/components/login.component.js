@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
 
 export default class login extends Component{
   constructor(props){
@@ -13,7 +12,9 @@ export default class login extends Component{
       this.state = {
         username: '',
         password: '',
-        error: "Sample error"
+        success: false,
+        redirectUrl: '',
+        error: ""
       } 
   }
 
@@ -37,18 +38,33 @@ export default class login extends Component{
 
     }
 
-    console.log(user);
-
     axios.post('http://localhost:5000/users/', user) //This is where it post to the endpoint
-      .then(res => console.log(res.data)).catch(err => this.setState(this.error));
+      .then(res =>
+        this.setState({
+          success: res.data.success,
+          redirectUrl: res.data.redirectUrl
+        })
+      )
+      .catch(err => this.setState(this.error));
+    
 
-    this.setState({ //were sending the username
+    this.setState({ //were sending the username //maybe change later
       username: '',
-      password:''
+      password: ''
     })
+    
+    if(this.state.success){
+      this.props.history.push({
+        pathname: this.state.redirectUrl,
+        state: {username: this.state.username}
+      })
+    }
+    
   }
 
+
   render() {
+    
     return (
       <div>
         <h3>Login</h3>
@@ -65,7 +81,7 @@ export default class login extends Component{
           </div>
           <div className="form-group"> 
             <label>Password: </label>
-            <input  type="text"
+            <input  type="password"
                 required
                 className="form-control"
                 value={this.state.password}
@@ -78,6 +94,10 @@ export default class login extends Component{
             <input type="submit" value="Login" className="btn btn-primary" />
           </div>
         </form>
+
+        <p>
+          {this.state.success}
+        </p> 
       </div>
     )
   }

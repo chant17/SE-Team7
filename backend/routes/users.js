@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bcryptjs = require("bcrypt");
 const {validationResult} = require("express-validator");
+const path = require("path");
+const axios = require("axios");
 
 
 let User = require("../models/user.model");
@@ -73,7 +75,11 @@ router.post('/', async (req, res) => {
     if(passCheck){
       req.session.loggedin = true;
       req.session.username = username;
-      //NEED A QUERY HERE TO CHECK ADMIN CREDENTIAL
+      return res.status(200).json({
+        success: true,
+        redirectUrl: '/adminLogin'
+      })  
+     
     }
     else{
       console.log("Wrong password");
@@ -87,6 +93,7 @@ router.post('/', async (req, res) => {
   }
 
 })
+
 
 router.get("/logout", (req, res, next)=>{
   try{

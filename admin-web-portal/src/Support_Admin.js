@@ -13,13 +13,13 @@ function Support() {
   return (
     <Router>
       <div className="container">
-      <Navbar />
-      <br/>
-      <Route path="/" exact component={NewRoleList} />
-      {/* <Route path="/" exact component={RolesList} /> */}
-      <Route path="/edit/:id" component={EditRole} />
-      <Route path="/create" component={CreateRole} />
-      <Route path="/user" component={CreateUser} />
+        <Navbar />
+        <br/>
+        <Route path="/" exact component={NewRoleList} />
+        {/* <Route path="/" exact component={RolesList} /> */}
+        <Route path="/edit/:id" component={EditRole} />
+        <Route path="/create" component={CreateRole} />
+        <Route path="/user" component={CreateUser} />
       </div>
     </Router>
   );
