@@ -1,17 +1,22 @@
- {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
   font-family: "poppins", sans-serif;
-
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
   background: #1b1d22;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.spec-navbar{
+  align-items: center;
+  align-content: center;
+}
+tbody{
+  color:white;
 }
 .Title {
   color: rgb(8, 229, 236);
@@ -25,7 +30,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   max-width: 1200px;
-  margin: 40px 0;
+  margin: 24px 15px;
 }
 .container .card {
   position: relative;
@@ -34,7 +39,7 @@ body {
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-  border-radius: 90px;
+  border-radius: 75px;
   margin: 25px;
 }
 .container .card .box {

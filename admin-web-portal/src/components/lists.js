@@ -57,6 +57,7 @@ const Example = () => {
     });
 
     // this.setState({
+
     //   exercises: this.state.exercises.filter(el => el._id !== id)
     // })
 

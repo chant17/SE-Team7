@@ -6,7 +6,6 @@ import RolesList from "./components/roles-list.component";
 import EditRole from "./components/edit-role.component";
 import CreateRole from "./components/create-role.component";
 import CreateUser from "./components/create-user.component";
-import css from "./components/component-CSS/main.css"
 import NewRoleList from "./components/lists"
 
 function Support() {
@@ -14,7 +13,6 @@ function Support() {
     <Router>
       <div className="container"> 
       <Navbar />
-      <br/>
       <Route path="/" exact component={NewRoleList} />
       {/* <Route path="/" exact component={RolesList} /> */}
       <Route path="/edit/:id" component={EditRole} />
