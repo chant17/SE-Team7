@@ -10,7 +10,7 @@ function Support() {
     <Router>
       <div className="container"> 
       <Navbar />
-      <Route path="/" exact component={NewRoleList} />
+      <Route path="/supportAdmin" exact component={NewRoleList} />
       {/* <Route path="/" exact component={RolesList} /> */}
       <Route path="/edit/:id" component={EditRole} />
       {/* <Route path="/create" component={CreateRole} /> */}
