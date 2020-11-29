@@ -1,5 +1,7 @@
 const router = require('express').Router();
 let role = require('../models/role.model');
+const bcryptjs = require("bcrypt");
+
 
 router.route('/').get((req, res) => {
   role.find()
@@ -7,20 +9,29 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
-  const username = req.body.username;
-  const admin_role = req.body.admin_role;
-  const password = req.body.password;
+router.post("/add", async (req, res) => {
+  let username = req.body.username;
+  let admin_role = req.body.admin_role;
+  let password = req.body.password;
 
-  const newExercise = new role({
+  let user = await role.findOne({ username });
+  if (user) {
+    return res.status(401).json({ msg: "Username is taken!" });
+  }
+
+  const salt = await bcryptjs.genSalt(10);
+  password = await bcryptjs.hash(password, salt);
+
+  const newUser = new role({
     username,
     admin_role,
     password,
   });
 
-  newExercise.save()
-  .then(() => res.json('role added!'))
-  .catch(err => res.status(400).json('Error: ' + err));
+  await newUser
+    .save()
+    .then(() => res.json('role added!'))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').get((req, res) => {
