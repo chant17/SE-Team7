@@ -3,19 +3,18 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { render } from "react-dom";
 
-const Exercise = (
-  props //functional react component
+const UserRole = (
+  props
 ) => (
   <tr>
-    <td>{props.exercise.username}</td>
-    <td>{props.exercise.admin_role}</td>
-    <td>{props.exercise.date.substring(0, 10)}</td>
+    <td>{props.roles.username}</td>
+    <td>{props.roles.admin_role}</td>
     <td>
-      <Link to={"/edit/" + props.exercise._id}>edit</Link> |{" "}
+      <Link to={"/edit/" + props.roles._id}>edit</Link> |{" "}
       <a
         href="linked_page"
         onClick={() => {
-          props.deleteExercise(props.exercise._id);
+          props.deleteroles(props.roles._id);
         }}
       >
         delete
@@ -24,13 +23,13 @@ const Exercise = (
   </tr>
 );
 
-const Example = () => {
+const FetcherList = () => {
   const [value, setValue] = useState([]);
   useEffect(() => {
-    console.log("TESt");
+    console.log("TEST");
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/roles/");
+        const { data } = await axios.get("http://localhost:5000/role/");
         setValue(data);
       } catch (e) {
         console.log(e);
@@ -40,26 +39,21 @@ const Example = () => {
     fetchData();
   }, []);
 
-  const exerciseList = () => {
-    return value.map((currentexercise) => {
+  const rolesList = () => {
+    return value.map((currentroles) => {
       return (
-        <Exercise
-          exercise={currentexercise}
-          deleteExercise={deleteExercise}
-          key={currentexercise._id}
+        <UserRole
+          roles={currentroles}
+          deleteroles={deleteroles}
+          key={currentroles._id}
         />
       );
     });
   };
-  const deleteExercise = (id) => {
-    axios.delete("http://localhost:5000/roles/" + id).then((response) => {
+  const deleteroles = (id) => {
+    axios.delete("http://localhost:5000/role/" + id).then((response) => {
       console.log(response.data);
     });
-
-    // this.setState({
-
-    //   exercises: this.state.exercises.filter(el => el._id !== id)
-    // })
 
     setValue(value.filter((el) => el._id !== id));
   };
@@ -71,14 +65,13 @@ const Example = () => {
           <tr>
             <th>Username</th>
             <th>Role</th>
-            <th>Date</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>{exerciseList()}</tbody>
+        <tbody>{rolesList()}</tbody>
       </table>
     </div>
   );
 };
 
-export default Example;
+export default FetcherList;

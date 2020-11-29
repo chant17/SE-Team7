@@ -10,12 +10,12 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const username = req.body.username;
   const admin_role = req.body.admin_role;
-  const date = Date.parse(req.body.date);
+  const password = req.body.password;
 
   const newExercise = new role({
     username,
     admin_role,
-    date,
+    password,
   });
 
   newExercise.save()
@@ -40,8 +40,7 @@ router.route('/update/:id').post((req, res) => {
     .then(role => {
       role.username = req.body.username;
       role.admin_role = req.body.admin_role;
-      role.duration = Number(req.body.duration);
-      role.date = Date.parse(req.body.date);
+      role.password = req.body.password;
 
       role.save()
         .then(() => res.json('role updated!'))
