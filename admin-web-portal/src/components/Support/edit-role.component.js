@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class EditExercise extends Component {
@@ -9,31 +8,30 @@ export default class EditExercise extends Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeAdmin_role = this.onChangeAdmin_role.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
       admin_role: '',
-      date: new Date(),
+      password: '',
       users: []
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/roles/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/role/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
           admin_role: response.data.admin_role,
-          date: new Date(response.data.date)
+          password: response.data.password,
         })   
       })
       .catch(function (error) {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/users/')
+    axios.get('http://localhost:5000/role/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -59,24 +57,18 @@ export default class EditExercise extends Component {
     })
   }
 
-  onChangeDate(date) {
-    this.setState({
-      date: date
-    })
-  }
-
   onSubmit(e) {
     e.preventDefault();
 
     const exercise = {
       username: this.state.username,
       admin_role: this.state.admin_role,
-      date: this.state.date
+      password: this.state.password
     }
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/roles/update/' + this.props.match.params.id, exercise)
+    axios.post('http://localhost:5000/role/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -113,16 +105,6 @@ export default class EditExercise extends Component {
               onChange={this.onChangeAdmin_role}
               />
         </div>
-        <div className="form-group">
-          <label>Date of change: </label>
-          <div>
-            <DatePicker
-              selected={this.state.date}
-              onChange={this.onChangeDate}
-            />
-          </div>
-        </div>
-
         <div className="form-group">
           <input type="submit" value="Confirm Edit" className="btn btn-primary" />
         </div>

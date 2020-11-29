@@ -11,7 +11,7 @@ function Finance() {
             <div class="content">
               <h2>Finance Reports</h2>
               <h3>click link below to be redirected</h3>
-              <a href="#">Click Here</a>
+              <a href="someLinkHere">Click Here</a>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@ function Finance() {
             <div class="content">
               <h2>Accounts Payable</h2>
               <h3>See which accounts need to be paid / invoices</h3>
-              <a href="#">Click Here</a>
+              <a href="someLinkHere">Click Here</a>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ function Finance() {
             <div class="content">
               <h2>Accounts Recievable</h2>
               <h3>Click below for a list of transfers</h3>
-              <a href="#">Click Here</a>
+              <a href="someLinkHere">Click Here</a>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ function Finance() {
             <div class="content">
               <h2>Tax</h2>
               <h3>Click below to see tax audit and info</h3>
-              <a href="#">Click Here</a>
+              <a href="someLinkHere">Click Here</a>
             </div>
           </div>
         </div>

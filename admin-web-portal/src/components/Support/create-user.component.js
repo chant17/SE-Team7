@@ -7,11 +7,13 @@ export default class CreateUser extends Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeadmin_role = this.onChangeadmin_role.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      admin_role:'',
     }
   }
 
@@ -25,23 +27,29 @@ export default class CreateUser extends Component {
       password: e.target.value
     })
   }
-
+  onChangeadmin_role(e) {
+    this.setState({
+      admin_role: e.target.value
+    })
+  }
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      admin_role: this.state.admin_role,
     }
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user) //This is where it post to the endpoint
+    axios.post('http://localhost:5000/role/add', user) //This is where it post to the endpoint
       .then(res => console.log(res.data));
 
     this.setState({ //were sending the username
       username: '',
-      password:''
+      password:'',
+      admin_role: '',
     })
   }
 
@@ -66,6 +74,15 @@ export default class CreateUser extends Component {
                 className="form-control"
                 value={this.state.password}
                 onChange={this.onChangePassword}
+                />
+          </div>
+          <div className="form-group"> 
+            <label>admin_role: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.admin_role}
+                onChange={this.onChangeadmin_role}
                 />
           </div>
           <br></br>

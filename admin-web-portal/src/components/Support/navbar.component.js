@@ -5,7 +5,6 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      {/* <nav className="spec-navbar"> */}
         <Link to="/" className="navbar-brand">
           Support Admin
         </Link>
@@ -14,11 +13,6 @@ export default class Navbar extends Component {
             <li className="navbar-item">
               <Link to="/" className="nav-link">
                 User Roles
-              </Link>
-            </li>
-            <li className="navbar-item">
-              <Link to="/create" className="nav-link">
-                Create logs
               </Link>
             </li>
             <li className="navbar-item">

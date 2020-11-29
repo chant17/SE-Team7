@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import Navbar from "./components/navbar.component"
-import RolesList from "./components/roles-list.component";
-import EditRole from "./components/edit-role.component";
-import CreateRole from "./components/create-role.component";
-import CreateUser from "./components/create-user.component";
-import NewRoleList from "./components/lists"
+import Navbar from "../Support/navbar.component"
+import EditRole from "../Support/edit-role.component";
+import CreateUser from "../Support/create-user.component";
+import NewRoleList from "../Support/lists"
 
 function Support() {
   return (
@@ -15,7 +13,7 @@ function Support() {
       <Route path="/" exact component={NewRoleList} />
       {/* <Route path="/" exact component={RolesList} /> */}
       <Route path="/edit/:id" component={EditRole} />
-      <Route path="/create" component={CreateRole} />
+      {/* <Route path="/create" component={CreateRole} /> */}
       <Route path="/user" component={CreateUser} />
       </div>
     </Router>
