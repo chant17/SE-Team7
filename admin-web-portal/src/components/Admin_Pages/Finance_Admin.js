@@ -49,6 +49,9 @@ function Finance() {
           </div>
         </div>
       </div>
+      <div class="container d-flex justify-content-center">
+        <button class="cool-link btn-danger " onClick={event => window.location.href="/login"}>Logout</button>
+      </div>
     </div>
   );
 }

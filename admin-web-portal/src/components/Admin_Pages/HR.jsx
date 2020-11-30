@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import HR from "./HR_outline";
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 class HR_admin extends Component{
     render(){
@@ -22,6 +24,9 @@ class HR_admin extends Component{
                     <div className = "col-md-4">
                         <HR title="HR Reports"/>
                     </div>
+                </div>
+                <div className="navbar-item d-flex justify-content-center">
+                    <Button variant="outline-light" onClick={event => window.location.href="/login"}>Logout</Button>{' '}
                 </div>
             </div>
         )
