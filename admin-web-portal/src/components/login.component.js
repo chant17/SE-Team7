@@ -59,6 +59,7 @@ export default class login extends Component {
 
   render() {
     if (this.state.success) {
+      console.log("LOGIN SUCCESSFUL.")
       this.props.history.push('/' + this.state.role);
     }
     return (

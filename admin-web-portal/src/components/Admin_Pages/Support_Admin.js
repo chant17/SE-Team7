@@ -8,8 +8,8 @@ import NewRoleList from "../Support/lists"
 function Support() {
   return (
     <Router>
-      <div className="container"> 
       <Navbar />
+      <div className="container"> 
       <Route path="/supportAdmin" exact component={NewRoleList} />
       {/* <Route path="/" exact component={RolesList} /> */}
       <Route path="/edit/:id" component={EditRole} />

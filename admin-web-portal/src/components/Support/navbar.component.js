@@ -5,13 +5,13 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">
+        <Link to="/SupportAdmin" className="navbar-brand">
           Support Admin
         </Link>
         <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/" className="nav-link">
+              <Link to="/SupportAdmin" className="nav-link">
                 User Roles
               </Link>
             </li>
@@ -19,6 +19,9 @@ export default class Navbar extends Component {
               <Link to="/user" className="nav-link">
                 Create User
               </Link>
+            </li>
+            <li className="navbar-item">
+              <Link onClick={event => window.location.href="/login"}>Logout</Link>
             </li>
           </ul>
         </div>
