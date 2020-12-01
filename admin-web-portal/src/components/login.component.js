@@ -64,6 +64,7 @@ export default class login extends Component {
     }
     return (
       <div>
+        <fieldset>
         <h3>Login</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -93,6 +94,8 @@ export default class login extends Component {
             <input type="submit" value="Login" className="btn btn-primary" />
           </div>
         </form>
+        
+        </fieldset>
       </div>
     );
   }

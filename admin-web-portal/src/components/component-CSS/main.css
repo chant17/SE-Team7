@@ -12,14 +12,33 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+.bga
+{
+    background-size: cover;
+    width: 100%;
+    z-index: 0;
+}
+fieldset {
+  align-content: right;
+  margin: 8px;
+  border: 2px solid silver;
+  padding: 12px;
+  border-radius: 4px;
+}
+legend {
+  padding: 2px;
+}
 .spec-navbar {
   align-items: center;
   align-content: center;
 }
-tbody {
-  color: white;
+h1{
+  align-items: center;
+  text-align: center;
 }
 .Title {
+  border: #000;
+  border-radius: 1px;
   color: rgb(8, 229, 236);
   position: center;
   text-align: center;

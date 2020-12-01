@@ -13,5 +13,6 @@ import HR from "./components/Admin_Pages/HR";
 ReactDOM.render(
   <Login />,
   // <Support />,
+  // <Sales/>,
   document.getElementById("root")
 );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const HR = (props) => {
+const Sales = (props) => {
   return (
     <div className="card text-center">
       <div className="overflow"></div>
@@ -11,4 +11,4 @@ const HR = (props) => {
     </div>
   );
 };
-export default HR;
+export default Sales;
