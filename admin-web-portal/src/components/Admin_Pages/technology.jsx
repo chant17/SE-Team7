@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import HR from "./HR_outline";
+import TECH from "./HR_outline";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import '../component-CSS/hr.css'
+import '../component-CSS/technology.css'
 
-class HR_admin extends Component{
+
+class technology extends Component{
     render(){
         return(
-            <div className="container-fluid d flex justify-content-center hr">
-                <div className = "Title"> HR Admin Page</div>
+            <div className="container-fluid d flex justify-content-center tech">
+                <div className = "Title"> Tech Admin Page</div>
                 <div className="row mx-auto">
                     <div className = "col-md-4 p-3">
-                        <HR title="New Hire On-boarding"/>
+                        <TECH title="Application Monitoring"/>
                     </div>
                     <div className = "col-md-4 p-3">
-                        <HR title="Benefits"/>
+                        <TECH title="Tech Support"/>
                     </div>
                     <div className = "col-md-4 p-3">
-                        <HR title="Payroll"/>
+                        <TECH title="App Development"/>
                     </div>
                     <div className = "col-md-4 p-3">
-                        <HR title="Off-boarding"/>
+                        <TECH title="App Admin"/>
                     </div>
                     <div className = "col-md-4 p-3">
-                        <HR title="HR Reports"/>
+                        <TECH title="Release Management"/>
                     </div>
                 </div>
                 <div className="navbar-item d-flex justify-content-center">
@@ -33,4 +34,4 @@ class HR_admin extends Component{
         )
     }
 }
-export default HR_admin;
+export default technology;
