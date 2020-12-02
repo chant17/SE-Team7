@@ -6,17 +6,18 @@ import Support from "./components/Admin_Pages/Support_Admin";
 import Finance from "./components/Admin_Pages/Finance_Admin.js";
 import Sales from "./components/Admin_Pages/Sales_Admin";
 import HR from "./components/Admin_Pages/HR";
+import Tech from "./components/Admin_Pages/technology";
 
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div>
       <Route path="/login" exact component={login} />
       <Route path="/HR" component={HR} />
       <Route path="/SupportAdmin" component={Support} />
       <Route path="/Finance" component={Finance} />
       <Route path="/Sales" component={Sales} />
-      
+      <Route path="/Technology" component={Tech} />
       </div>
     </Router>
   );
