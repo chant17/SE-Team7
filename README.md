@@ -53,9 +53,6 @@ and open 2 separate terminals / one if all merged
 yarn start
 for all 2
 
-Please configure your own api key for the mailing service in the dotenv file
-It is inside the server folder under survey-result folder.
-
 nodemon server.js
 
 ```
@@ -63,14 +60,17 @@ nodemon server.js
 ## Installation
 
 ```
-Important note, I hid the API key for sendgrid in dotenv. However when the company uses this, they should make their own personal business account which will then give them their own api key.
-
-Additional note: Please allow the server on EC2 to host on proxy: localhost 3000 or picked port just in case of CORS policy exception.
+Mount on databse of your choice
 ```
 
 ## Contributing
 
 ```Makers
+
+ReadMe made by Jeremy Bayangos
+
+
+contributors to the project:
 
 Jeremy Bayangos
 Chantha Mak
