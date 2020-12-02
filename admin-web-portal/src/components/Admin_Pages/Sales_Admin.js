@@ -4,8 +4,8 @@ import Sales_page from "./Sales_Outline";
 
 function Sales() {
   return (
+      
     <div className="container-fluid d flex justify-content-center">
-      <img  class = "bga" src={require('../../images/Sales page.jpg')} />
       <h1>Sales Admin Page</h1>
 
                 <div className="row">
